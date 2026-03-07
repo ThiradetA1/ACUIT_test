@@ -5,21 +5,22 @@ import pymysql
 file_path = "Relational Data & SQL Optimization/chicago_crimes_100k.csv"
 df = pd.read_csv(file_path)
 
-df = df[['id','case_number','date','primary_type','latitude','longitude']]
-df.columns = ['id','case_number','occurrence_date','primary_type','latitude','longitude']
+df = df[['id','case_number','date','primary_type','district','latitude','longitude']]
+df.columns = ['id','case_number','occurrence_date','primary_type','district','latitude','longitude']
 
 df['occurrence_date'] = pd.to_datetime(df['occurrence_date'])
 
 df['latitude'] = pd.to_numeric(df['latitude'], errors='coerce')
 df['longitude'] = pd.to_numeric(df['longitude'], errors='coerce')
 
-df = df.dropna(subset=['latitude', 'longitude'])
 df = df[(df['latitude'] >= -90) & (df['latitude'] <= 90)]
 df = df[(df['longitude'] >= -180) & (df['longitude'] <= 180)]
 
 df['latitude'] = df['latitude'].round(6)
 df['longitude'] = df['longitude'].round(6)
 
+df['district'] = df['district'].astype(str).str.strip()
+df['district'] = df['district'].replace('nan', None)
 
 df = df.drop_duplicates(subset=['id'])
 
@@ -41,6 +42,7 @@ with engine.begin() as conn:
             case_number VARCHAR(20),
             occurrence_date DATETIME,
             primary_type VARCHAR(100),
+            district VARCHAR(10),
             latitude DECIMAL(9, 6),
             longitude DECIMAL(9, 6),
             location POINT SRID 4326
