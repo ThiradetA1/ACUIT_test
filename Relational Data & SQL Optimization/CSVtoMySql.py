@@ -5,6 +5,10 @@ import pymysql
 file_path = "Relational Data & SQL Optimization/chicago_crimes_100k.csv"
 df = pd.read_csv(file_path)
 
+df['date'] = pd.to_datetime(df['date'])
+
+print(df['id'].duplicated().sum())
+
 engine = create_engine('mysql+pymysql://root:root@localhost:3306/chicago_db')
 
 connection = pymysql.connect(
