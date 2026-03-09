@@ -1,6 +1,6 @@
 import pandas as pd
 
-file_path = "Relational Data & SQL Optimization/chicago_crimes_100k.csv"
+file_path = "data\chicago_crimes_100k.csv"
 df = pd.read_csv(file_path)
 
 total_rows = len(df)

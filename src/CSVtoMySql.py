@@ -2,7 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import pymysql
 
-file_path = "Relational Data & SQL Optimization/chicago_crimes_100k.csv"
+file_path = "data/chicago_crimes_100k.csv"
 df = pd.read_csv(file_path)
 
 df['date'] = pd.to_datetime(df['date'])
