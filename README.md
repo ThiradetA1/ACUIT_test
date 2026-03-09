@@ -23,12 +23,13 @@
     - Missing latitude :  0.396 %
     - Missing longitude :  0.396 %
      - Data Handling Strategy
-    # ใช้ Column ['block'] ส่งไปที่ API Google Map หรือ Nominatim เพื่อแปลงกลับมาเป็น Lat/lon
-    # Check Bias ตรวจสอบก่อนว่าข้อมูล latitude กับ longitude ที่หายไปเป็นแบบสุ่มหรือแบบเฉพาะพท้นที่เพื่อไม่ให้ model เกิดการ biass
-    # ทำการตรวจสอบพิกัดที่ไม่ได้อยู่ในขอบเขตของ chicago
-    # ใช้ Uber H3 เพื่อแปลงพิกัดเป็น Discrete Area IDs เพื่อแก้ GPS Noise 
-    # ทำข้อมูล 2 ชุด ชุดแรกเป็น original data ชุดสองเป็น ข้อมูลที่เราจัดการมา เพื่อดูว่าข้อมูลที่เราทำมา สร้าง Noise หรือ ทำให้ Model เกิด Bias ไปจากความจริงไหม
+       - ใช้ Column ['block'] ส่งไปที่ API Google Map หรือ Nominatim เพื่อแปลงกลับมาเป็น Lat/lon
+       - Check Bias ตรวจสอบก่อนว่าข้อมูล latitude กับ longitude ที่หายไปเป็นแบบสุ่มหรือแบบเฉพาะพท้นที่เพื่อไม่ให้ model เกิดการ biass
+       - ทำการตรวจสอบพิกัดที่ไม่ได้อยู่ในขอบเขตของ chicago
+       - ใช้ Uber H3 เพื่อแปลงพิกัดเป็น Discrete Area IDs เพื่อแก้ GPS Noise 
+       - ทำข้อมูล 2 ชุด ชุดแรกเป็น original data ชุดสองเป็น ข้อมูลที่เราจัดการมา เพื่อดูว่าข้อมูลที่เราทำมา สร้าง Noise หรือ ทำให้ Model เกิด Bias ไปจากความจริงไหม
 
 # Part 2: Unstructured Data & AI Preprocessing
   ในส่วนนี้ผมใช้ vide code 100% เนื่องจากผมไม่มีความรู้ทางเรื่องนี้เลย หากมีเวลามากว่านี้ผมสามารถเข้าใจและทำมันออกมาได้ครับ
   
+
